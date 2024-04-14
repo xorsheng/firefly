@@ -1,0 +1,43 @@
+{
+  "name": "firefly",
+  "version": "1.0.1",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "keywords": [],
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "simple-git-hooks",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "commitlint": "commitlint --edit",
+    "commit": "cz",
+    "release": "release-it"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.13.3",
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0",
+    "@release-it/conventional-changelog": "^8.0.1",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-format": "^0.1.0",
+    "lint-staged": "^15.2.2",
+    "release-it": "^17.2.0",
+    "simple-git-hooks": "^2.11.1"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged",
+    "commit-msg": "pnpm commitlint"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
